@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, mainActivity!</string>
+    <string name="app_name">CRCC Android App</string>
+    <string name="app_about">About Me</string>
+	<string name="str_exit">Exit</string>
+	<string name="app_about_message">Copyright 2011: JerDogDev, with permission of Cedar Ridge Christian Church</string>
+	<string name="str_ok">Ok</string>
+	<string name="app_exit">Exit</string>
+	<string name="app_exit_message">Exit?</string>
+	<string name="str_no">No</string>
+</resources>
