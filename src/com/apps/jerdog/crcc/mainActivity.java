@@ -13,8 +13,10 @@
 //	2011-01-29	jmm:	added menu actions (v0.2)
 //	2011-01-29	jmm:	added progress bar for loading functions (v0.2)
 //	2011-01-29	jmm:	added functions for menu for About and Exit app (v0.2.1)
-//	2011-01-30	jmm:	split out tel: from url handling
-
+//	2011-01-30	jmm:	split out tel: from url handling (v0.2.2)
+//	2011-01-31	jmm:	added link in menu to rss feed (v0.2.2)
+//	2011-01-31	jmm:	enabled cache, geolocation, plugins, multiple windows, allow js to open windows (v0.2.2)
+// 	2011-01-31	jmm:	added Messages menu which loads rss page (v0.2.2)
 
 
 package com.apps.jerdog.crcc;
@@ -59,10 +61,16 @@ public class mainActivity extends Activity {
            	}
         });
         
-        // set the settings for the webvien
+        // set the settings for the webview
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setSupportZoom(true);
         webview.getSettings().setBuiltInZoomControls(true);
+        webview.getSettings().setAppCacheEnabled(true);
+        webview.getSettings().setAppCacheMaxSize(128);
+        webview.getSettings().setGeolocationEnabled(true);
+        webview.getSettings().setPluginsEnabled(true);
+        webview.getSettings().setSupportMultipleWindows(true);
+        webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webview.setWebViewClient(new myWebViewClient());
         webview.loadUrl("http://www.cedarridge.cc");
         }
@@ -73,7 +81,7 @@ public class mainActivity extends Activity {
       super.onCreateOptionsMenu(menu);
      
       menu.add(0, 0, 0, R.string.app_about);
-//      menu.add("Messages Feed");
+      menu.add(0,1,1,"Messages Feed");
 //      menu.add("Facility Calendar");
       menu.add(0,4,4,R.string.str_exit);
       return super.onCreateOptionsMenu(menu);
@@ -87,6 +95,12 @@ public class mainActivity extends Activity {
     	{
     	case 0:
     		openOptionsDialog();
+    		break;
+    	case 1:
+//    		webview.loadUrl("http://www.churchmp3.com/public/churches/9/messages.xml");
+//    		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.churchmp3.com/public/churches/9/messages.xml")); 
+    		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cedarridge.cc/media.php?pageID=40")); 
+    			startActivity(intent);
     		break;
     	case 4:
     		exitOptionsDialog();
