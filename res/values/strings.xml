@@ -7,6 +7,10 @@
 	<string name="app_about_message">Copyright 2011: JerDogDev, with permission of Cedar Ridge Christian Church</string>
 	<string name="str_ok">Ok</string>
 	<string name="app_exit">Exit</string>
-	<string name="app_exit_message">Exit?</string>
+	<string name="app_exit_message">Exit the application?</string>
 	<string name="str_no">No</string>
+	<string name="loading_">Loading the application...</string>
+	<string name="http_www_cedarridge_cc">http://www.cedarridge.cc</string>
+	<string name="messages_feed">Messages Feed</string>
+	<string name="crcc_rss_feed">http://www.cedarridge.cc/media.php?pageID=40</string>
 </resources>

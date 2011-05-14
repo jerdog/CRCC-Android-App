@@ -23,7 +23,6 @@ package com.apps.jerdog.crcc;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -31,10 +30,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.FrameLayout;
 
 @SuppressWarnings("unused")
 public class mainActivity extends Activity {
@@ -53,7 +54,7 @@ public class mainActivity extends Activity {
         webview.setWebChromeClient(new WebChromeClient() {					// sets the Chrome Client and defines the 
         	public void onProgressChanged(WebView view, int progress)		// onProgressChanged - making the progress bar update
         	{
-        		MyActivity.setTitle("Loading...");				// text to display during the loading
+        		MyActivity.setTitle(R.string.loading_);				// text to display during the loading
         		MyActivity.setProgress(progress * 100);			// make the bar display upon loading
         		
         		if(progress == 100)								// return the app name after finished loading
@@ -65,6 +66,7 @@ public class mainActivity extends Activity {
         webview.getSettings().setJavaScriptEnabled(true);
         webview.getSettings().setSupportZoom(true);
         webview.getSettings().setBuiltInZoomControls(true);
+        webview.setInitialScale(25);
         webview.getSettings().setAppCacheEnabled(true);
         webview.getSettings().setAppCacheMaxSize(128);
         webview.getSettings().setGeolocationEnabled(true);
@@ -72,7 +74,7 @@ public class mainActivity extends Activity {
         webview.getSettings().setSupportMultipleWindows(true);
         webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webview.setWebViewClient(new myWebViewClient());
-        webview.loadUrl("http://www.cedarridge.cc");
+        webview.loadUrl(getString(R.string.http_www_cedarridge_cc));
         }
  
     // begin the code for the application menu
@@ -81,7 +83,7 @@ public class mainActivity extends Activity {
       super.onCreateOptionsMenu(menu);
      
       menu.add(0, 0, 0, R.string.app_about);
-      menu.add(0,1,1,"Messages Feed");
+      menu.add(0,1,1,R.string.messages_feed);
 //      menu.add("Facility Calendar");
       menu.add(0,4,4,R.string.str_exit);
       return super.onCreateOptionsMenu(menu);
@@ -99,7 +101,7 @@ public class mainActivity extends Activity {
     	case 1:
 //    		webview.loadUrl("http://www.churchmp3.com/public/churches/9/messages.xml");
 //    		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.churchmp3.com/public/churches/9/messages.xml")); 
-    		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.cedarridge.cc/media.php?pageID=40")); 
+    		Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.crcc_rss_feed))); 
     			startActivity(intent);
     		break;
     	case 4:
@@ -180,10 +182,10 @@ public class mainActivity extends Activity {
             return true;
         }
         
-        public Intent newEmailIntent(Context context, String subject) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Message sent from CRCC Android App");
-            intent.setType("message/rfc822");
-            return intent;
-        }
+//        public Intent newEmailIntent(Context context, String subject) {
+//            Intent intent = new Intent(Intent.ACTION_SEND);
+//            intent.putExtra(Intent.EXTRA_SUBJECT, "Message sent from CRCC Android App");
+//            intent.setType("message/rfc822");
+//            return intent;
+//        }
     }}

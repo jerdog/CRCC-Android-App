@@ -20,30 +20,30 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 @SuppressWarnings("unused")
-public class CopyOfmainActivity extends Activity {
+public class mediaActivity extends Activity {
     /** Called when the activity is first created. */
     /**@Override */
-    WebView webview;
+    WebView mWebview;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        webview = (WebView) findViewById(R.id.webview);
-        webview.getSettings().setJavaScriptEnabled(true);
-        webview.getSettings().setSupportZoom(true);
-        webview.getSettings().setBuiltInZoomControls(true);
-        webview.setWebViewClient(new WebViewClient());
-        webview.loadUrl("http://www.cedarridge.cc");
+        mWebview = (WebView) findViewById(R.id.webview);
+        mWebview.getSettings().setJavaScriptEnabled(true);
+        mWebview.getSettings().setSupportZoom(true);
+        mWebview.getSettings().setBuiltInZoomControls(true);
+        mWebview.setWebViewClient(new WebViewClient());
+        mWebview.loadUrl("http://www.cedarridge.cc/media.php?pageID=40");
         }
     
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && webview.canGoBack()) {
-            webview.goBack();
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebview.canGoBack()) {
+        	mWebview.goBack();
             return true;
         }
         return super.onKeyDown(keyCode, event);
     }
-    public class myWebViewClient extends WebViewClient {
+    public class mWebViewClient extends WebViewClient {
         public boolean shouldOverrideUrlLoading(WebView view, String url) 
         {
             if (url.startsWith("mailto:") || url.startsWith("tel:")) { 
